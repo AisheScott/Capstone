@@ -11,7 +11,7 @@ export default function Navigation({ token, setToken }) {
         <nav className="main-nav">
           <ul>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/rentals">Rentals</Link></li>
+            <li><Link to="/products">Products</Link></li>
     
             {isLoggedIn ? (
               <>

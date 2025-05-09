@@ -1,12 +1,12 @@
 import  { useState } from "react";
-import { useRentalsQuery } from "../api/rentalApi";
+import { useProductsQuery } from "../api/productApi";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "./SearchBar";
 
 
-function Rentals () {
+function Products () {
 
-    const { data = {}, error, isLoading } = useRentalsQuery();
+    const { data = {}, error, isLoading } = useProductsQuery();
     const navigate = useNavigate();
     const [searchParameter, setSearchParameter] = useState("");
 
@@ -26,27 +26,27 @@ function Rentals () {
         );
       }
 
-      const rentalsToDisplay =
+      const productsToDisplay =
       searchParameter !== "" && data
         ? data.filter(
-            (rental) =>
-              (rental.name &&
-                rental.name
+            (product) =>
+              (product.name &&
+                product.name
                   .toUpperCase()
                   .includes(searchParameter.toUpperCase())) ||
-              (rental.author &&
-                rental.author
+              (product.author &&
+                product.author
                   .toUpperCase()
                   .includes(searchParameter.toUpperCase())) ||
-              (rental.description &&
-                rental.description
+              (product.description &&
+                product.description
                   .toUpperCase()
                   .includes(searchParameter.toUpperCase()))
           )
         : data;
   
     return (
-        <section className="RentalDetails">
+        <section className="ProductDetails">
             <div id="Login_Register">
 
               <button onClick={() => navigate("/Login")}>Log In</button>
@@ -59,29 +59,29 @@ function Rentals () {
                 setSearchParameter={setSearchParameter}
               />
             </div>          
-            {rentalsToDisplay.map((rental) => (
-                <div key={rental.id} className="rental-card">
+            {productsToDisplay.map((product) => (
+                <div key={product.id} className="product-card">
 
                 <div >
-                  <img src={rental.coverimage} alt={rental.title} className="rental-image" />
+                  <img src={product.coverimage} alt={product.title} className="product-image" />
                     <h2>
                     {
-                        rental.title
+                        product.title
                     }
                     </h2>
 
                     <p>
                     {
-                        rental.name
+                        product.name
                     }
                     </p>
 
                     <p>
                       Available: 
-                       {rental.available ? "Yes" : "No"}
+                       {product.available ? "Yes" : "No"}
                     
                     </p>
-                    <button onClick={() => navigate(`/${rental.id}`)}>Details</button>
+                    <button onClick={() => navigate(`/${product.id}`)}>Details</button>
                 </div>
                 </div>
             ))}
@@ -89,4 +89,4 @@ function Rentals () {
   );
 }
 
-export default Rentals;
+export default Products;
