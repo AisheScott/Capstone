@@ -1,8 +1,7 @@
 import { useState } from 'react'
-//import bookLogo from './assets/books.png'
 import  Products from "./components/Products.jsx"
 import React from "react";
-//import SingleBook from "./components/SingleBook";
+//import SingleProduct from "./components/SingleProduct";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import { Route, Routes } from "react-router-dom";
