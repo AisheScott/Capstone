@@ -16,7 +16,7 @@ export default function Navigation({ token, setToken }) {
             {isLoggedIn ? (
               <>
                 <li><Link to="/account">Account</Link></li>
-                <li><Link to="/reservations">Reservations</Link></li>
+                <li><Link to="/products">Products</Link></li>
                 <li><button onClick={handleLogout}>Logout</button></li>
               </>
             ) : (

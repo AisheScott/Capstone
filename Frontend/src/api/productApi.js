@@ -3,10 +3,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 //Define API using createApi
 export const productApi= createApi({
 
-    reducePath: "rentalApi",
+    reducePath: "productApi",
     
     baseQuery: fetchBaseQuery({
-        //baseUrl: "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api" ,
         baseUrl: "http://localhost:3000/api" ,
     }),
 
@@ -33,3 +32,5 @@ export const productApi= createApi({
     });
 
     export const { useProductsQuery, useSingleProductQuery, useRegisterMutation } = productApi;
+
+    export default productApi;
