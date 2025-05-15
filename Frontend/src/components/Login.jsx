@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
-//import { useLoginMutation } from "../api/bookBuddyApi";
+//import { useLoginMutation } from "../api/productApi";
 
-/* TODO - add your code to create a functional React component that renders a login form */
 function Login() {
   const navigate = useNavigate();
   
