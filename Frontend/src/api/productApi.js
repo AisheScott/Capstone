@@ -12,7 +12,7 @@ export const productApi= createApi({
     endpoints: (builder) => ({
         // Define an endpoint that fetches products
         products: builder.query({
-          query: () => "/products",
+          query: () => "/products/available",
           providesTags: ["Products"],
         }),
 

@@ -63,16 +63,16 @@ function Products () {
                 <div key={product.id} className="product-card">
 
                 <div >
-                  <img src={product.coverimage} alt={product.title} className="product-image" />
+                  <img src={product.img_url} alt={product.title} className="product-image" />
                     <h2>
                     {
-                        product.title
+                        product.description
                     }
                     </h2>
 
-                    <p>
+                    <p> $
                     {
-                        product.name
+                        product.price
                     }
                     </p>
 

@@ -21,9 +21,9 @@ const {
       createUser("Herb", "somePassword",true, "Herb Baushke", "herb@gmail.com", "HB AVE", "","",),
       createUser("Mike", "123456",true, "Mike Hrushake", "mike@gmail.com", "MH BLVD", "","",),
       createUser("Bill", "654321",true, "Bill Miklosivic", "bill@aol.com", "BM Lane", "","",),
-      createProduct("GolfCart"),
-      createProduct("Razor"),
-      createProduct("DuneBuggy"),
+      createProduct("GolfCart","https://media.istockphoto.com/id/2166147190/photo/golf-cart-against-white-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=rdiv4qWsVtnhaERAIZUPRmyJY6uumPLgF1-tb4zeeJ4=",50,1),
+      createProduct("Razor","https://media.istockphoto.com/id/1988307891/photo/atv-and-utv-offroad-vehicle-racing-in-sand-dunes-extreme-adrenalin-4x4.webp?a=1&b=1&s=612x612&w=0&k=20&c=dsk2uBc4o6f5gA-0odUsNLn57vN7tqKNxEmrr8wwBL0=",100,2),
+      createProduct("DuneBuggy","https://media.istockphoto.com/id/538324315/photo/blue-dune-buggy.webp?a=1&b=1&s=612x612&w=0&k=20&c=Go2dRuPLrgSEQvVT3vPG95oeAVZ9-M56doTzUGzVpzk=",75,4),
     ]);
   
     console.log("users created");

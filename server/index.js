@@ -1,5 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
+const cors = require('cors');
+
 require("dotenv").config();
 const {
     client,
@@ -24,6 +26,7 @@ const {
   } = require("./db");
 
   const server = express();
+  server.use(cors());
   client.connect();
   
   server.use(express.json());

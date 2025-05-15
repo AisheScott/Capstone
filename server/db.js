@@ -11,7 +11,7 @@ const client = new pg.Client(
 const createTables = async () => {
   const SQL = `
         DROP TABLE IF EXISTS user_products;
-        DROP TABLE IF EXISTS product;
+        DROP TABLE IF EXISTS products;
         DROP TABLE IF EXISTS users;
 
         CREATE TABLE users(
@@ -26,10 +26,10 @@ const createTables = async () => {
             billing_address VARCHAR(255)
         );
 
-        CREATE TABLE product(
+        CREATE TABLE products(
             id UUID PRIMARY KEY,
             description VARCHAR(255) NOT NULL,
-            img_url VARCHAR(255) NOT NULL,
+            img_url VARCHAR(255),
             price FLOAT NOT NULL,
             quantity_available INTEGER NOT NULL CHECK (quantity_available >= 0)
         );
@@ -37,7 +37,7 @@ const createTables = async () => {
         CREATE TABLE user_products(
             id UUID PRIMARY KEY,
             user_id UUID REFERENCES users(id) NOT NULL,
-            product_id UUID REFERENCES product(id) NOT NULL,
+            product_id UUID REFERENCES products(id) NOT NULL,
             quantity INTEGER NOT NULL CHECK (quantity > 0),
             CONSTRAINT unique_user_skill UNIQUE (user_id, product_id)
         );
@@ -57,7 +57,7 @@ async function createUser(
   billing_address
   ) 
   {
-  const SQL = `INSERT INTO user(id, username, password, is_admin, name, email_address, mailing_address, phone_number, billing_address) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *;`;
+  const SQL = `INSERT INTO users(id, username, password, is_admin, name, email_address, mailing_address, phone_number, billing_address) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *;`;
   const hashedPassword = await bcrypt.hash(password, 10);
   const response = await client.query(SQL, [
     uuid.v4(),
