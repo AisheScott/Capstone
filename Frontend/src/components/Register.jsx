@@ -1,9 +1,9 @@
 /* TODO - add your code to create a functional React component that renders a registration form */
 
 import { useNavigate } from "react-router-dom";
-// import { useRegisterMutation } from "../api/bookBuddyApi";
+//import { useRegisterMutation } from "../api/productApi";
 import { useEffect, useState } from "react";
-// import React, {useState} from "react";
+//import React, {useState} from "react";
 
 /* TODO - add your code to create a functional React component that renders a registration form */
 function Register() {
@@ -22,7 +22,7 @@ function Register() {
   //       firstName: "",
   //       lastName: "",
   //       email: "",
-  //       password: "",
+  //      password: "",
   //     });
   //     navigate("/");
   //   }

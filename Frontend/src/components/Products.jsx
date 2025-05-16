@@ -46,46 +46,36 @@ function Products () {
         : data;
   
     return (
-        <section className="ProductDetails">
-            <div id="Login_Register">
+    <>
+      {/* Header Section */}
+      <section className="ProductHeader">
+        <h1>Welcome to Ashlin Mortor Sports Rentals</h1>
+        <div id="Login_Register">
+          <button onClick={() => navigate("/Login")}>Log In</button>
+          <button onClick={() => navigate("/Register")}>Register</button>
+        </div>
 
-              <button onClick={() => navigate("/Login")}>Log In</button>
-              <button onClick={() => navigate("/Register")}>Register</button>
+        <div id="SearchBar">
+          <SearchBar
+            searchParameter={searchParameter}
+            setSearchParameter={setSearchParameter}
+          />
+        </div>
+      </section>
 
-            </div>
-            <div id="SearchBar">
-              <SearchBar
-                searchParameter={searchParameter}
-                setSearchParameter={setSearchParameter}
-              />
-            </div>          
-            {productsToDisplay.map((product) => (
-                <div key={product.id} className="product-card">
-
-                <div >
-                  <img src={product.img_url} alt={product.title} className="product-image" />
-                    <h2>
-                    {
-                        product.description
-                    }
-                    </h2>
-
-                    <p> $
-                    {
-                        product.price
-                    }
-                    </p>
-
-                    <p>
-                      Available: 
-                       {product.available ? "Yes" : "No"}
-                    
-                    </p>
-                    <button onClick={() => navigate(`/${product.id}`)}>Details</button>
-                </div>
-                </div>
-            ))}
-        </section>
+      {/* Product Listing Section */}
+      <section className="ProductDetails">
+        {productsToDisplay.map((product) => (
+          <div key={product.id} className="product-card">
+            <img src={product.img_url} alt={product.title} className="product-image" />
+            <h2>{product.description}</h2>
+            <p>${product.price} / Day</p>
+            <p>Available: {product.quantity_available}</p>
+            <button onClick={() => navigate(`/${product.id}`)}>Details</button>
+          </div>
+        ))}
+      </section>
+    </>
   );
 }
 

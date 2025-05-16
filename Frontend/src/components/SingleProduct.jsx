@@ -43,46 +43,37 @@ function SingleProduct() {
   };
 
   return (
-    <section>
-      <section className="Checkout_Success">
-        {successMessage && (
-          <div className="popup">
-            <p>{successMessage}</p>
-            <button onClick={() => setSuccessMessage("")}>OK</button>
-          </div>
-        )}
-      </section>
-      <section className="ProductsList">
-        <div key={product.id} className="ProductDetails">
-          <img src={product.img_url} alt={product.title} className="product-image" />
-                    <h2>
-                    {
-                        product.description
-                    }
-                    </h2>
-
-                    <p> $
-                    {
-                        product.price
-                    }
-                    </p>
-
-                    <p>
-                      Available: 
-                       {product.available ? "Yes" : "No"}
-              {product.available ? (
-                <button onClick={() => handleReservation(product.id, product.title)}>
-                  Rent Product
-                </button>
-              ) : (
-                "Rental Unavailable"
-              )}
-            </p>
-          )}
-          <button onClick={() => navigate("/")}>Back to Catelog</button>
+  <section>
+    <section className="Checkout_Success">
+      {successMessage && (
+        <div className="popup">
+          <p>{successMessage}</p>
+          <button onClick={() => setSuccessMessage("")}>OK</button>
         </div>
-      </section>
+      )}
     </section>
+
+    <section className="ProductsList">
+      <div key={product.id} className="Product-Details">
+        <img src={product.img_url} alt={product.title} className="product-image" />
+        <h2>{product.description}</h2>
+        <p>${product.price} / Day</p>
+
+        <p>
+          <strong>Available: </strong>
+          {product.quantity_available}
+        </p>
+
+       {product.quantity_available > 0 && (
+        <button onClick={() => handleReservation(product.id, product.title)}>
+        Rent Product
+        </button>
+        )}
+
+        <button onClick={() => navigate("/")}>Back to Catalog</button>
+      </div>
+    </section>
+  </section>
   );
 }
 

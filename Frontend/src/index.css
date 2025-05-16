@@ -72,7 +72,7 @@ button:focus-visible {
   display: flex; 
   justify-content: center; 
   align-items: center; 
-  height: 300px;
+  height: 500px;
   width: 100%;
   padding: 2px;
 }
@@ -106,7 +106,7 @@ button:focus-visible {
   border-radius: 3%; 
   
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column; 
   align-items: center; 
   justify-content: center;
   /* position: relative;  */
@@ -117,6 +117,36 @@ button:focus-visible {
   transform: translateY(
     -20px
   );
-  background-color: rgb(112, 111, 111); 
+  background-color: rgb(218, 207, 207); 
 }
 
+.Product-Details {
+  width: 800px; 
+  height: 1200px; 
+  left: 30%;
+  margin: 10px; 
+  background-color: white; 
+  border: 3px solid black; 
+  border-radius: 3%; 
+  
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center; 
+  justify-content: center;
+  position: absolute;
+  transition: transform 0.3s; 
+}
+
+#Login_Register {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* optional: aligns buttons to the left */
+  gap: 10px;
+  margin-bottom: 20px;
+  left: 50%;
+}
+
+#Login_Register{
+  left: 30%;
+}
