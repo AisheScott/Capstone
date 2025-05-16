@@ -28,6 +28,7 @@ const {
       createProduct("Dirt Bike","https://media.istockphoto.com/id/1097446772/photo/red-racing-motorcycle-for-motocross-by-side-view.jpg?s=612x612&w=0&k=20&c=Ll5xe9mAvDAJIH2FoMDvqA6uM2CW_PsdS18E2mxtv5E=",65,4),
       createProduct("electric scooter","https://media.istockphoto.com/id/2152111709/photo/photo-of-electric-push-scooter-outdoors-in-the-parking-photography-with-powerful-kikscooter.jpg?s=612x612&w=0&k=20&c=XGqEOM8-s2yjtJ6Z0DF5ajY6LhlwFKLoeEfp-uMpwhE=",25,15),
       createProduct("SlingShot","https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRyyMieBGkqHcim_pffr49miy89h1KzUzdgLh6qXibqyDnXpKzb6qnIFW_OKEdB6zNDoORrBTXrLwNzMB5AasP1v15XI7pHDq1SYlHJ8x4jAz7GtbEC1yZ-pA",125,1),
+      createProduct("Electric Bike","https://images.unsplash.com/photo-1619678786641-23eb19f27924?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fGVsZWN0cmljJTIwYmlrZXxlbnwwfHwwfHx8MA%3D%3D",35,1),
       ]);
   
     console.log("users created");

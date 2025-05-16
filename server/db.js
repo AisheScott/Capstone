@@ -38,7 +38,7 @@ const createTables = async () => {
             id UUID PRIMARY KEY,
             user_id UUID REFERENCES users(id) NOT NULL,
             product_id UUID REFERENCES products(id) NOT NULL,
-            quantity INTEGER NOT NULL CHECK (quantity > 0),
+            quantity INTEGER,
             CONSTRAINT unique_user_skill UNIQUE (user_id, product_id)
         );
     `;
