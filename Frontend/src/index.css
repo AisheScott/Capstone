@@ -121,9 +121,10 @@ button:focus-visible {
 }
 
 .Product-Details {
-  width: 800px; 
-  height: 1200px; 
+  width: 600px; 
+  height: 900px; 
   left: 30%;
+  top: 10%;
   margin: 10px; 
   background-color: white; 
   border: 3px solid black; 
@@ -148,5 +149,12 @@ button:focus-visible {
 }
 
 #Login_Register{
+  left: 30%;
+}
+
+.Checkout_Success{
+  align-items: center; 
+  justify-content: center;
+  position: absolute;
   left: 30%;
 }

@@ -33,10 +33,10 @@ function SingleProduct() {
   }
 
   // Handes the reservation of the product
-  const handleReservation = async (productId, productTitle) => {
+  const handleReservation = async (product) => {
     try {
   //    await reserveData({ productId }).unwrap();
-      setSuccessMessage(`${productTitle} was successfully checked out!`);
+      setSuccessMessage(`${product.description} was successfully Rented!`);
     } catch (error) {
       console.log("Error while checking out product", error);
     }
@@ -48,7 +48,7 @@ function SingleProduct() {
       {successMessage && (
         <div className="popup">
           <p>{successMessage}</p>
-          <button onClick={() => setSuccessMessage("")}>OK</button>
+          <button onClick={() => navigate("/")}>OK</button>
         </div>
       )}
     </section>

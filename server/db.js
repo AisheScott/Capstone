@@ -126,13 +126,13 @@ async function fetchProducts() {
 }
 
 async function fetchAvailableProducts() {
-  const SQL = `SELECT  * from products WHERE quantity_available > 0;`;
+  const SQL = `SELECT  * from products WHERE quantity_available >= 0;`;
   const response = await client.query(SQL);
   return response.rows;
 }
 
 async function fetchProduct(id) {
-  const SQL = `SELECT  * from products WHERE id = $1 AND quantity_available > 0`;
+  const SQL = `SELECT  * from products WHERE id = $1 AND quantity_available >= 0`;
   const response = await client.query(SQL, [id]);
   const product = response.rows[0];
   if (!product) {
