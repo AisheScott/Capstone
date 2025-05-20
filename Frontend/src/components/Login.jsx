@@ -10,12 +10,12 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const handleLogin = async (e) => {
-    e.preventDefault(); // prevent form reload
+    e.preventDefault(); 
 
     try {
       const result = await login({ username: email, password }).unwrap();
       localStorage.setItem("token", result.token);
-      navigate("/dashboard"); // or wherever you want to go after login
+      navigate("/dashboard"); 
     } catch (err) {
       console.error("Login failed:", err);
       alert("Invalid credentials");
