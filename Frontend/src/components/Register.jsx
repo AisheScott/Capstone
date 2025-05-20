@@ -1,73 +1,124 @@
-/* TODO - add your code to create a functional React component that renders a registration form */
-
 import { useNavigate } from "react-router-dom";
-//import { useRegisterMutation } from "../api/productApi";
-import { useEffect, useState } from "react";
-//import React, {useState} from "react";
+import { useRegisterMutation } from "../api/productApi";
+import { useState } from "react";
 
-/* TODO - add your code to create a functional React component that renders a registration form */
 function Register() {
   const navigate = useNavigate();
-  // const [createUser] = useRegisterMutation(credentials);
-  const [credentials, setCredentials] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
+  const [registerUser, { isLoading, error }] = useRegisterMutation();
 
-  // useEffect(() => {
-  //   if (isSuccess) {
-  //     setCredentials({
-  //       firstName: "",
-  //       lastName: "",
-  //       email: "",
-  //      password: "",
-  //     });
-  //     navigate("/");
-  //   }
-  // }, [isSuccess, navigate]);
+  const [credentials, setCredentials] = useState({
+    username: "",
+    password: "",
+    name: "",
+    email_address: "",
+    mailing_address: "",
+    phone_number: "",
+    billing_address: "",
+  });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await createUser(credentials).unwrap();
-      
-    } catch {
-      console.log("Error while registering user: ", error);
+      const response = await registerUser({
+        ...credentials,
+        is_admin: false, // or true if needed
+      }).unwrap();
+
+      localStorage.setItem("token", response.token);
+      navigate("/dashboard"); // or wherever you go after registration
+    } catch (err) {
+      console.error("Error while registering user:", err);
     }
   };
 
   const handleChange = (event) => {
-    const { name, value} = event.target;
+    const { name, value } = event.target;
     setCredentials((data) => ({
       ...data,
       [name]: value,
     }));
-  }
+  };
 
   return (
     <section id="Register">
       <form id="RegisterForm" onSubmit={handleSubmit}>
-        <label htmlFor="firstName">
-          First Name
-          <input name="firstName" placeholder="First Name" value={credentials.firstName} onChange={handleChange}></input>
+        <label>
+          Username
+          <input
+            name="username"
+            placeholder="Username"
+            value={credentials.username}
+            onChange={handleChange}
+            required
+          />
         </label>
-        <label htmlFor="lastName">
-          Last Name
-          <input name="lastName" placeholder="Last Name" value={credentials.lastName} onChange={handleChange}></input>
-        </label>
-        <label htmlFor="email">
-          Email
-          <input placeholder="Email" name="email" value={credentials.email} onChange={handleChange}></input>
-        </label>
-        <label htmlFor="password">
+        <label>
           Password
-          <input name="password" placeholder="Password" value={credentials.password} onChange={handleChange}></input>
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={credentials.password}
+            onChange={handleChange}
+            required
+          />
         </label>
+        <label>
+          Full Name
+          <input
+            name="name"
+            placeholder="Full Name"
+            value={credentials.name}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label>
+          Email
+          <input
+            name="email_address"
+            type="email"
+            placeholder="Email"
+            value={credentials.email_address}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Mailing Address
+          <input
+            name="mailing_address"
+            placeholder="Mailing Address"
+            value={credentials.mailing_address}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label>
+          Phone Number
+          <input
+            name="phone_number"
+            placeholder="Phone Number"
+            value={credentials.phone_number}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Billing Address
+          <input
+            name="billing_address"
+            placeholder="Billing Address"
+            value={credentials.billing_address}
+            onChange={handleChange}
+            required
+          />
+        </label>
+
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? "Registering..." : "Register"}
+        </button>
       </form>
 
-      <button type="submit">Register</button>
+      {error && <p style={{ color: "red" }}>Registration failed. Please try again.</p>}
 
       <div>
         <button onClick={() => navigate("/")}>Back</button>
