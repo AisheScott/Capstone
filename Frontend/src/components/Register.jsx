@@ -21,11 +21,11 @@ function Register() {
     try {
       const response = await registerUser({
         ...credentials,
-        is_admin: false, // or true if needed
+        is_admin: false,
       }).unwrap();
 
       localStorage.setItem("token", response.token);
-      navigate("/dashboard"); // or wherever you go after registration
+      navigate("/");
     } catch (err) {
       console.error("Error while registering user:", err);
     }
