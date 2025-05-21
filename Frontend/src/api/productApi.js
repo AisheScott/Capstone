@@ -7,7 +7,7 @@ export const productApi = createApi({
   reducerPath: "productApi", 
 
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:3000/api",
+    baseUrl: "https://capstone-901u.onrender.com/api",
   }),
 
   endpoints: (builder) => ({
