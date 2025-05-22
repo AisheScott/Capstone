@@ -1,8 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useSingleProductQuery } from "../api/productApi";
-//import { getToken } from "../features/user/userSlice";
+import { getToken } from "../userSlice/userSlice.jsx";
 //import { useReserveMutation } from "../api/productApi";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 
 function SingleProduct() {
@@ -12,7 +13,7 @@ function SingleProduct() {
  //   useReserveMutation();
   const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
-  //const token = useSelector(getToken);
+  const token = useSelector(getToken);
 
   // Show a loading message while data is being fetched
   if (isLoading) {
@@ -36,7 +37,7 @@ function SingleProduct() {
   const handleReservation = async (product) => {
     try {
   //    await reserveData({ productId }).unwrap();
-      setSuccessMessage(`${product.description} was successfully Rented!`);
+      setSuccessMessage(`Successfully Rented!`);
     } catch (error) {
       console.log("Error while checking out product", error);
     }
@@ -64,11 +65,12 @@ function SingleProduct() {
           {product.quantity_available}
         </p>
 
-       {product.quantity_available > 0 && (
-        <button onClick={() => handleReservation(product.id, product.title)}>
-        Rent Product
-        </button>
-        )}
+          {product.quantity_available > 0 && //token && 
+          (
+          <button onClick={() => handleReservation(product.id, product.title)}>
+          Rent Product
+          </button>
+)}
 
         <button onClick={() => navigate("/")}>Back to Catalog</button>
       </div>

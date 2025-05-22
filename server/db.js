@@ -5,14 +5,17 @@ const jwt = require("jsonwebtoken");
 const JWT_SECRET = process.env.JWT_SECRET || "safe";
 
 const connectionString = 
-  process.env.DATABASE_URL || "postgresql://postgres:Kortney11@localhost:5432/unit4careersimulation_db";
+  process.env.DATABASE_URL || "postgresql://capstone_db_wtzl_user:wDpwW2kJvG8xQhygqOEleuINN7ZFID3k@dpg-d0mhuguuk2gs73fm4m7g-a.ohio-postgres.render.com/capstone_db_wtzl";
+  //process.env.DATABASE_URL || "postgresql://postgres:Kortney11@localhost:5432/unit4careersimulation_db";
 
 const client = new pg.Client({
   connectionString,
-  ssl:
-    process.env.NODE_ENV === "production"
-      ? { rejectUnauthorized: false }
-      : undefined,
+  ssl:{
+    rejectUnauthorized: false
+  }
+    // process.env.NODE_ENV === "production"
+    //   ? { rejectUnauthorized: false }
+    //   : undefined,
 });
 
 const createTables = async () => {
@@ -64,6 +67,7 @@ async function createUser(
   billing_address
   ) 
   {
+  
   const SQL = `INSERT INTO users(id, username, password, is_admin, name, email_address, mailing_address, phone_number, billing_address) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *;`;
   const hashedPassword = await bcrypt.hash(password, 10);
   const response = await client.query(SQL, [

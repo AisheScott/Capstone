@@ -13,9 +13,9 @@ function Login() {
     e.preventDefault();
 
     try {
-      const result = await login({ email, password }).unwrap();
+      const result = await login({ username: email, password }).unwrap();
       localStorage.setItem("token", result.token);
-      navigate("/dashboard");
+      navigate("/");
     } catch (err) {
       console.error("Login failed:", err);
       alert("Invalid credentials");
@@ -28,8 +28,8 @@ function Login() {
         <label htmlFor="email">
           Email
           <input
-            placeholder="Email"
-            type="email"
+            placeholder="Username"
+            type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />

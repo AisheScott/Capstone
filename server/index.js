@@ -31,7 +31,7 @@ const {
   
   server.use(express.json());
   server.use(morgan("dev"));
-
+  
   server.use(async (req, res, next) => {
     try {
       const token = req.header("Authorization");
